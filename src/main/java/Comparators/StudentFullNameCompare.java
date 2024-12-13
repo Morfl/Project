@@ -1,6 +1,6 @@
 package Comparators;
 
-import models.Student;
+import Entity.Student;
 import org.apache.commons.lang3.StringUtils;
 
 public class StudentFullNameCompare implements StudentComparator {

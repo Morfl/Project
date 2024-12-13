@@ -1,6 +1,6 @@
 package Comparators;
 
-import models.University;
+import Entity.University;
 
 import java.util.Comparator;
 

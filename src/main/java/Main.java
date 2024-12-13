@@ -1,47 +1,47 @@
-import Comparators.ComparatorUtil;
+import Entity.Student;
+import Entity.University;
+import Util.ComparatorUtil;
 import Comparators.StudentComparator;
 import Comparators.UniversityComparator;
-import enums.StudentEnum;
-import enums.UniversityEnum;
-import functions.FileReader;
-import models.Student;
-import models.University;
+import Enums.StudentEnum;
+import Enums.UniversityEnum;
+import Functions.FileReader;
+import Util.JsonUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        StudentComparator idStd = ComparatorUtil.getStudentComparator(StudentEnum.UNIVERSITY_ID);
-        StudentComparator fullNameStd = ComparatorUtil.getStudentComparator(StudentEnum.FULL_NAME);
-        StudentComparator avgExamScoreStd = ComparatorUtil.getStudentComparator(StudentEnum.AVG_EXAM_SCORE);
-        StudentComparator courseStd = ComparatorUtil.getStudentComparator(StudentEnum.COURSE);
+        List<Student> students = FileReader.readStudent();
+        String jsonStudents = JsonUtil.serializationListStudent(students);
 
-        UniversityComparator idUniv = ComparatorUtil.getUniversityComparator(UniversityEnum.ID);
-        UniversityComparator yearUniv = ComparatorUtil.getUniversityComparator(UniversityEnum.YEAR);
-        UniversityComparator fullNameUniv = ComparatorUtil.getUniversityComparator(UniversityEnum.FULL_NAME);
-        UniversityComparator profileUniv = ComparatorUtil.getUniversityComparator(UniversityEnum.PROFILE);
-        UniversityComparator shortNameUniv = ComparatorUtil.getUniversityComparator(UniversityEnum.SHORT_NAME);
+        List<University> universities = FileReader.readUniversity();
+        String jsonUniversities = JsonUtil.serializationListUniversity(universities);
+        System.out.println(jsonStudents);
+        System.out.println(jsonUniversities);
 
+        List<Student> newStudents = JsonUtil.deserializationListStudent(jsonStudents);
+        List<University> newUniversities = JsonUtil.deserializationListUniversity(jsonUniversities);
+        System.out.println(students);
+        System.out.println(newStudents);
 
-        FileReader.readStudent().stream().sorted(idStd).forEach(System.out::println);
-        System.out.println();
-        FileReader.readStudent().stream().sorted(fullNameStd).forEach(System.out::println);
-        System.out.println();
-        FileReader.readStudent().stream().sorted(avgExamScoreStd).forEach(System.out::println);
-        System.out.println();
-        FileReader.readStudent().stream().sorted(courseStd).forEach(System.out::println);
-        System.out.println();
+        System.out.println(newStudents.size() == students.size());
+        System.out.println(newUniversities.size() == universities.size());
 
+        students.forEach(student -> {
+            String jsonStudent = JsonUtil.serializationStudent(student);
+            System.out.println(jsonStudent);
+            Student newStudent = JsonUtil.deserializationStudent(jsonStudent);
+            System.out.println(newStudent);
+        });
 
-        FileReader.readUniversity().stream().sorted(idUniv).forEach(System.out::println);
-        System.out.println();
-        FileReader.readUniversity().stream().sorted(yearUniv).forEach(System.out::println);
-        System.out.println();
-        FileReader.readUniversity().stream().sorted(fullNameUniv).forEach(System.out::println);
-        System.out.println();
-        FileReader.readUniversity().stream().sorted(profileUniv).forEach(System.out::println);
-        System.out.println();
-        FileReader.readUniversity().stream().sorted(shortNameUniv).forEach(System.out::println);
+        universities.forEach(university -> {
+            String jsonUniversity = JsonUtil.serializationUniversity(university);
+            System.out.println(jsonUniversity);
+            University newUniversity = JsonUtil.deserializationUniversity(jsonUniversity);
+            System.out.println(newUniversity);
+        });
 
 
     }

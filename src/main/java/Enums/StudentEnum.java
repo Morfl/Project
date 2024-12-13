@@ -1,6 +1,4 @@
-package enums;
-
-import Comparators.StudentAvgExamScoreCompare;
+package Enums;
 
 public enum StudentEnum  {
     UNIVERSITY_ID,

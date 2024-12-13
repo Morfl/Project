@@ -1,12 +1,18 @@
-package models;
+package Entity;
 
-import enums.StudyProfile;
+import Enums.StudyProfile;
+import com.google.gson.annotations.SerializedName;
 
 public class University{
+    @SerializedName("Номер университета")
     String id;
+    @SerializedName("Название")
     String fullName;
+    @SerializedName("Аббревиатура")
     String shortName;
+    @SerializedName("Год основания")
     int yearOfFoundation;
+    @SerializedName("Направление")
     StudyProfile mainProfile;
 
     public University(String id, String fullName, String shortName, int yearOfFoundation, StudyProfile mainProfile) {

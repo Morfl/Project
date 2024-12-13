@@ -1,8 +1,8 @@
-package functions;
+package Functions;
 
-import enums.StudyProfile;
-import models.Student;
-import models.University;
+import Enums.StudyProfile;
+import Entity.Student;
+import Entity.University;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;

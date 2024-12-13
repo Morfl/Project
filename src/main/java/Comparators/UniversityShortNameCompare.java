@@ -1,6 +1,6 @@
 package Comparators;
 
-import models.University;
+import Entity.University;
 import org.apache.commons.lang3.StringUtils;
 
 public class UniversityShortNameCompare implements UniversityComparator{

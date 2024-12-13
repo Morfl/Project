@@ -1,8 +1,7 @@
 package Comparators;
 
-import models.Student;
+import Entity.Student;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.util.StringUtil;
 
 public class StudentUniversityIdCompare implements StudentComparator{
     @Override
