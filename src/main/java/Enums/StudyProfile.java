@@ -1,6 +1,9 @@
 package Enums;
 
- public enum StudyProfile {
+import lombok.Getter;
+
+@Getter
+public enum StudyProfile {
     MEDICINE("Медицина"),
     PHYSICS("Физика"),
     LINGUISTICS("Лингвистика"),
@@ -12,7 +15,4 @@ package Enums;
         this.profileName = profileName;
     }
 
-    public String getProfileName() {
-        return profileName;
-    }
 }

@@ -15,8 +15,8 @@ import java.util.Iterator;
 
 public class FileReader {
 
-    private static FileInputStream fileInputStream;
-    private static XSSFWorkbook workbook;
+    private static final FileInputStream fileInputStream;
+    private static final XSSFWorkbook workbook;
     private static Sheet sheet;
     private static Iterator<Row> iteratorRow;
     private static Iterator<Cell> iteratorCell;
@@ -36,9 +36,7 @@ public class FileReader {
     }
 
 
-    private FileReader() {
-
-    }
+    private FileReader() {}
 
     public static ArrayList<Student> readStudent() {
 
