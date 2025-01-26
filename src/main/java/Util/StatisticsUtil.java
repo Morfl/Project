@@ -8,6 +8,8 @@ import Enums.StudyProfile;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class StatisticsUtil {
@@ -15,6 +17,8 @@ public class StatisticsUtil {
     public static List<Statistics> collectingStatistics(List<Student> students, List<University> universities) {
 
         List<Statistics> statisticsList = new ArrayList<>();
+
+        Logger statisticsUtilLogger = Logger.getLogger(StatisticsUtil.class.getName());
 
         Set<StudyProfile> studyProfiles = universities.stream().map(University::getMainProfile).collect(Collectors.toSet());
 
@@ -52,6 +56,7 @@ public class StatisticsUtil {
             avg.ifPresent(value -> statistics.setAvgExamScore(
                     (float) BigDecimal.valueOf(value).setScale(2, RoundingMode.HALF_UP).doubleValue()));
         });
+        statisticsUtilLogger.log(Level.INFO, "Статистика собрана");
         return statisticsList;
 
 

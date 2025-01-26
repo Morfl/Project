@@ -7,8 +7,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileWriter {
+
+    private static final Logger fileWriterLogger = Logger.getLogger(FileWriter.class.getName());
 
     public static void writeStatistics(List<Statistics> statistics, String path) {
         try {
@@ -62,7 +66,9 @@ public class FileWriter {
             }
 
             workbook.write(fileOutputStream);
+            fileWriterLogger.log(Level.INFO, "Статистика записана");
         } catch (IOException e) {
+            fileWriterLogger.log(Level.SEVERE, "Ошибка при записи статистики, не найден путь записи");
             e.printStackTrace();
         }
 

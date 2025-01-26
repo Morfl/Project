@@ -12,8 +12,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileReader {
+
+    private static final Logger fileReaderLogger = Logger.getLogger(FileReader.class.getName());
 
     private static final FileInputStream fileInputStream;
     private static final XSSFWorkbook workbook;
@@ -30,7 +34,7 @@ public class FileReader {
             fileInputStream = new FileInputStream("src\\main\\resources\\universityInfo.xlsx");
             workbook = new XSSFWorkbook(fileInputStream);
         } catch (IOException e) {
-            System.out.println("Отсутствует исходный файл");
+            fileReaderLogger.log(Level.SEVERE, "Отсутствует исходный файл");
             throw new RuntimeException(e);
         }
     }
@@ -66,6 +70,7 @@ public class FileReader {
             result.add(student);
             info.clear();
         }
+        fileReaderLogger.log(Level.INFO, "Студенты прочитаны");
         return result;
     }
 
@@ -99,6 +104,7 @@ public class FileReader {
             result.add(university);
             info.clear();
         }
+        fileReaderLogger.log(Level.INFO, "Университеты прочитаны");
         return result;
     }
 }
